@@ -1,0 +1,19 @@
+name: "Test Workflow Commands"
+
+on: ['push']
+
+jobs:
+    job-1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Group Logging"
+              run: |
+                echo "::group::My Group Message"
+                echo "Message 1"
+                echo "Message 2"
+                echo "Message 3"
+                echo "::endgroup::"
+            - name: "Set environment variable"
+              run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
+            - name: "Use environment variable"
+              run: echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
